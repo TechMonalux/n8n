@@ -67,8 +67,8 @@ exit
 ```bash
 mkdir docker
 cd docker
-mkdir mi-proyecto
-cd mi-proyecto
+mkdir n8n
+cd n8n
 ```
 
 ### 6. Crear archivo de configuración
@@ -80,28 +80,30 @@ nano docker-compose.yml
 Ejemplo de configuración:
 
 ```yaml
-#Archivo proporcionado por [Tu Nombre]
+#Archivo proporcionado por TechMonalux
 
 services:
-  mi-proyecto:
-    image: mi-proyecto:latest
-    container_name: mi-proyecto
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
     restart: unless-stopped
     ports:
       - "5678:5678"
     environment:
-      - HOST=0.0.0.0
-      - PORT=5678
-      - PROTOCOL=http
-      - WEBHOOK_URL=http://192.168.0.20:5678
+      - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=http://x.x.x.x:5678
       - TZ=Europe/Madrid
       - NODE_ENV=production
+      - N8N_SECURE_COOKIE=false
+      - N8N_RUNNERS_ENABLED=false
     volumes:
-      - mi_proyecto_data:/home/node/.mi-proyecto
+      - n8n_data:/home/node/.n8n
       - ./local-files:/files
 
 volumes:
-  mi_proyecto_data:
+  n8n_data:
 ```
 
 ### 7. Ejecutar el contenedor en segundo plano
@@ -126,26 +128,6 @@ docker logs ID-del-contenedor
 
 ```
 http://IP-del-servidor:5678
-```
-
-## 📋 Estructura del proyecto
-
-```
-mi-proyecto/
-├── docker-compose.yml
-├── README.md
-├── .env.example
-├── .gitignore
-├── LICENSE
-├── local-files/
-│   └── (archivos de ejemplo)
-├── docs/
-│   ├── instalacion.md
-│   ├── configuracion.md
-│   └── troubleshooting.md
-└── examples/
-    ├── docker-compose-basic.yml
-    └── docker-compose-advanced.yml
 ```
 
 ## 📋 Requisitos del sistema
@@ -202,7 +184,7 @@ Ejemplos comunes:
 - Configuración de variables de entorno
 - Mejores prácticas de seguridad básica
 
-## ✔️ Beneficios de usar [Tu Proyecto] en tu propio servidor
+## ✔️ Beneficios de usar n8n en tu propio servidor
 
 - ✅ **Privacidad y control**: Tus datos permanecen en tu servidor
 - ✅ **Independencia**: No dependes de servicios externos
@@ -301,18 +283,11 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## 🙏 Agradecimientos
 
-- Comunidad de [Tu Proyecto]
+- Comunidad de TechMonalux
 - Contribuidores del repositorio
 - Comunidad de Docker y contenedores
 - Usuarios que reportan issues y sugieren mejoras
-- [Canal/Creator original] por la inspiración
-
-## 📊 Estadísticas del proyecto
-
-- ⭐ Estrellas en GitHub: ![GitHub stars](https://img.shields.io/github/stars/tu-usuario/tu-repositorio)
-- 🍴 Forks: ![GitHub forks](https://img.shields.io/github/forks/tu-usuario/tu-repositorio)
-- 📝 Issues: ![GitHub issues](https://img.shields.io/github/issues/tu-usuario/tu-repositorio)
-- 📦 Última release: ![GitHub release](https://img.shields.io/github/v/release/tu-usuario/tu-repositorio)
+- ***techtodai*** gracias por la inspiración
 
 ---
 
@@ -326,11 +301,11 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## About
 
-Archivos usados en el tutorial de instalación de [Tu Proyecto] con Docker Compose.
+Archivos usados en el tutorial de instalación de n8n con Docker Compose.
 
 ### Topics
 
-`docker` `youtube` `tutorial` `ubuntu` `docker-compose` `nano` `ubuntu-server` `compose` `self-hosting` `automation` `[tu-proyecto]` `[tu-nombre-canal]`
+`docker` `youtube` `tutorial` `ubuntu` `docker-compose` `nano` `ubuntu-server` `compose` `self-hosting` `automation` `n8n` `TechMonalux`
 
 ### Resources
 
