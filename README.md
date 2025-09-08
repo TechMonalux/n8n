@@ -1,4 +1,4 @@
-# 🚀 Instalación de [Tu Proyecto] con Docker Compose
+# 🚀 Instalación de n8n con Docker Compose
 
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Docker Compose](https://img.shields.io/badge/docker--compose-%232496ED.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/compose/)
@@ -6,13 +6,11 @@
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tu-usuario)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/)
 
-En este repositorio encontrarás la guía paso a paso para instalar **[Tu Proyecto]** en un servidor Ubuntu utilizando **Docker Compose**.
-
-[Tu Proyecto] es una herramienta de [descripción de tu proyecto] de código abierto, ideal para quienes buscan [beneficio principal], [beneficio secundario] y potenciar proyectos personales o profesionales sin depender de plataformas externas.
+En este repositorio encontrarás la guía paso a paso para instalar **n8n** en un Ubuntu utilizando **Docker Compose**.
 
 ## 📹 Video tutorial
 
-En este video te enseño cómo instalar [Tu Proyecto] en Ubuntu Server utilizando Docker Compose, paso a paso y desde cero.
+En este video te enseño cómo instalar **n8n** en Ubuntu utilizando Docker Compose, paso a paso y desde cero.
 
 ### [ENLACE A TU VIDEO DE YOUTUBE]
 
@@ -30,7 +28,7 @@ ssh usuario@IP-del-servidor
 sudo apt update && sudo apt upgrade -y
 ```
 
-### 3. Instalar editor de texto (nano)
+### 3. Instalar editor de texto (nano, a veces no viene preinstalado en el sistema)
 
 ```bash
 sudo apt install nano
@@ -39,12 +37,26 @@ sudo apt install nano
 ### 4. Instalar Docker y Docker Compose
 
 ```bash
-# Instalar Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
+# Actualizamos el PC
+sudo apt update
 
-# Agregar usuario al grupo docker
-sudo usermod -aG docker $USER
+# Instalamos los certificados
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+# Descargamos Docker
+curl -fsSL https://download.docker.com/linux/ubu... | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+# Actualizamos el PC
+sudo apt update
+
+# Instalamos Docker:
+apt-cache policy docker-ce
+sudo apt install docker-ce
+
+# Comprobar la correcta instalación de Docker
+sudo systemctl status docker
+
 
 # Cerrar sesión y volver a conectar
 exit
